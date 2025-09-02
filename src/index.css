@@ -1,0 +1,826 @@
+@import "tailwindcss";
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* Account for fixed navbar */
+}
+
+/* Enhanced scroll animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scroll reveal animation classes */
+.scroll-reveal {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  animation: slideInFromLeft 0.8s ease-out forwards;
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  animation: slideInFromRight 0.8s ease-out forwards;
+}
+
+/* Stagger animation delays */
+.scroll-reveal:nth-child(1) { animation-delay: 0.1s; }
+.scroll-reveal:nth-child(2) { animation-delay: 0.2s; }
+.scroll-reveal:nth-child(3) { animation-delay: 0.3s; }
+.scroll-reveal:nth-child(4) { animation-delay: 0.4s; }
+.scroll-reveal:nth-child(5) { animation-delay: 0.5s; }
+
+/* Visible Scrolling Animations */
+@keyframes scrollProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes floatingParticles {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateY(-20px) rotate(180deg); 
+    opacity: 1;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { 
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes scrollWave {
+  0% { transform: translateX(-100%) scaleY(1); }
+  50% { transform: translateX(0%) scaleY(1.2); }
+  100% { transform: translateX(100%) scaleY(1); }
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #a855f7, #3b82f6, #ec4899);
+  z-index: 9999;
+  animation: scrollProgress linear;
+  animation-timeline: scroll();
+  box-shadow: 0 2px 10px rgba(168, 85, 247, 0.5);
+}
+
+/* Floating particles during scroll */
+.scroll-particles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #a855f7, transparent);
+  border-radius: 50%;
+  animation: floatingParticles 3s ease-in-out infinite;
+}
+
+.particle:nth-child(odd) {
+  background: radial-gradient(circle, #3b82f6, transparent);
+  animation-delay: -1s;
+}
+
+.particle:nth-child(3n) {
+  background: radial-gradient(circle, #ec4899, transparent);
+  animation-delay: -2s;
+}
+
+/* Section transition effects */
+.section-transition {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-transition::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #a855f7, transparent);
+  animation: scrollWave 2s ease-in-out infinite;
+}
+
+/* Glowing elements during scroll */
+.scroll-glow {
+  transition: all 0.5s ease;
+}
+
+.scroll-glow.in-view {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Background gradient animation during scroll */
+@keyframes backgroundShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-background {
+  background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533483);
+  background-size: 400% 400%;
+  animation: backgroundShift 15s ease infinite;
+}
+
+/* 3D Quantum Scroll Animations */
+@keyframes quantumWave {
+  0%, 100% { 
+    transform: translateX(-20px) scaleY(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateX(20px) scaleY(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes qubitFloat {
+  0%, 100% { 
+    transform: rotateZ(0deg) translateY(0px);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: rotateZ(180deg) translateY(-8px);
+    opacity: 1;
+  }
+}
+
+@keyframes scanlines {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes energyCore {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1) rotateZ(0deg);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.3) rotateZ(180deg);
+    opacity: 1;
+  }
+}
+
+@keyframes dataStream {
+  0% { 
+    transform: translateY(0px);
+    opacity: 0;
+  }
+  50% { 
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+@keyframes hologramGlow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3), inset 0 0 20px rgba(168, 85, 247, 0.2);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.6), inset 0 0 40px rgba(168, 85, 247, 0.4);
+  }
+}
+
+/* Quantum Hologram Styles */
+.quantum-hologram {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.quantum-hologram::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, transparent, rgba(6, 182, 212, 0.1), transparent, rgba(168, 85, 247, 0.1), transparent);
+  border-radius: inherit;
+  z-index: -1;
+  animation: hologramGlow 3s ease-in-out infinite;
+}
+
+/* Remove old 3D animations */
+@keyframes electronOrbit1 {
+  0% { transform: rotateZ(0deg) translateX(40px) rotateZ(0deg); }
+  100% { transform: rotateZ(360deg) translateX(40px) rotateZ(-360deg); }
+}
+
+@keyframes electronOrbit2 {
+  0% { transform: rotateZ(0deg) translateX(60px) rotateZ(0deg); }
+  100% { transform: rotateZ(360deg) translateX(60px) rotateZ(-360deg); }
+}
+
+@keyframes electronOrbit3 {
+  0% { transform: rotateZ(0deg) translateX(80px) rotateZ(0deg); }
+  100% { transform: rotateZ(360deg) translateX(80px) rotateZ(-360deg); }
+}
+
+@keyframes energyWave {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes quantumFloat {
+  0%, 100% { 
+    transform: translate(-50%, -50%) translateY(0px);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: translate(-50%, -50%) translateY(-10px);
+    opacity: 1;
+  }
+}
+
+@keyframes quantumPulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.8), 0 0 40px rgba(168, 85, 247, 0.4);
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 1), 0 0 60px rgba(168, 85, 247, 0.6);
+  }
+}
+
+/* 3D Transform Enhancements */
+.quantum-3d-container {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.quantum-3d-container > * {
+  transform-style: preserve-3d;
+}
+
+* {
+  box-sizing: border-box;
+  cursor: none; /* Hide default cursor */
+}
+
+/* Quantum Atom Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease-out;
+}
+
+/* Atom nucleus - glowing center */
+.atom-nucleus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #ffffff 0%, #a855f7 40%, #6366f1 100%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 
+    0 0 10px #a855f7,
+    0 0 20px #a855f7,
+    0 0 30px rgba(168, 85, 247, 0.3);
+  animation: nucleus-pulse 1.5s ease-in-out infinite alternate;
+}
+
+/* Electron orbital rings */
+.electron-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg, 
+    transparent 0deg, 
+    rgba(168, 85, 247, 0.3) 90deg, 
+    transparent 180deg, 
+    rgba(99, 102, 241, 0.3) 270deg, 
+    transparent 360deg
+  );
+  mask: radial-gradient(circle, transparent 49%, white 50%);
+  -webkit-mask: radial-gradient(circle, transparent 49%, white 50%);
+}
+
+.orbit-1 {
+  width: 40px;
+  height: 40px;
+  animation: orbit-rotate 2s linear infinite;
+}
+
+.orbit-2 {
+  width: 50px;
+  height: 25px;
+  animation: orbit-rotate 2.5s linear infinite reverse;
+  transform: translate(-50%, -50%) rotateX(60deg);
+}
+
+.orbit-3 {
+  width: 50px;
+  height: 25px;
+  animation: orbit-rotate 3s linear infinite;
+  transform: translate(-50%, -50%) rotateX(-60deg);
+}
+
+/* Orbiting electrons */
+.electron {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #60a5fa 0%, #3b82f6 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 6px #60a5fa,
+    0 0 12px rgba(96, 165, 250, 0.5);
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: electron-orbit 2s linear infinite;
+}
+
+.electron-1 {
+  animation-duration: 2s;
+}
+
+.electron-2 {
+  animation-duration: 2.5s;
+  animation-direction: reverse;
+}
+
+.electron-3 {
+  animation-duration: 3s;
+}
+
+/* Hover state - excited atom */
+.custom-cursor.hover {
+  transform: scale(1.3);
+}
+
+.custom-cursor.hover .atom-nucleus {
+  background: radial-gradient(circle, #ffffff 0%, #ec4899 40%, #f59e0b 100%);
+  box-shadow: 
+    0 0 15px #ec4899,
+    0 0 25px #ec4899,
+    0 0 40px rgba(236, 72, 153, 0.4);
+  animation-duration: 0.8s;
+}
+
+.custom-cursor.hover .electron-orbit {
+  background: conic-gradient(
+    from 0deg, 
+    transparent 0deg, 
+    rgba(236, 72, 153, 0.4) 90deg, 
+    transparent 180deg, 
+    rgba(245, 158, 11, 0.4) 270deg, 
+    transparent 360deg
+  );
+}
+
+.custom-cursor.hover .electron {
+  background: radial-gradient(circle, #f472b6 0%, #ec4899 100%);
+  box-shadow: 
+    0 0 8px #f472b6,
+    0 0 15px rgba(244, 114, 182, 0.6);
+}
+
+/* Click state - atomic reaction */
+.custom-cursor.click {
+  transform: scale(0.7);
+}
+
+.custom-cursor.click .atom-nucleus {
+  background: radial-gradient(circle, #ffffff 0%, #10b981 40%, #059669 100%);
+  box-shadow: 
+    0 0 20px #10b981,
+    0 0 35px #10b981,
+    0 0 50px rgba(16, 185, 129, 0.5);
+  animation-duration: 0.3s;
+}
+
+/* Quantum particle trails */
+.cursor-trail {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  box-shadow: 0 0 6px rgba(168, 85, 247, 0.6);
+}
+
+/* Quantum uncertainty effect for trails */
+@keyframes quantum-particle {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.2);
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3);
+    filter: blur(1px);
+  }
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  width: 100%;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* Custom Animations for Modern Background Effects */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(10px) rotate(240deg);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: scaleX(1) translateX(0%);
+    opacity: 0;
+  }
+  50% {
+    transform: scaleX(1.2) translateX(10%);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cursor-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes trail-fade {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+/* Atom-specific animations */
+@keyframes nucleus-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes orbit-rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes electron-orbit {
+  0% {
+    transform: translateX(-50%) rotate(0deg) translateX(18px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg) translateX(18px) rotate(-360deg);
+  }
+}
+
+/* Quantum uncertainty effect for trails */
+@keyframes quantum-particle {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.5);
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.2);
+    filter: blur(1.5px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-slide-right {
+  animation: slide-right 8s linear infinite;
+}
+
+.animate-slide-down {
+  animation: slide-down 10s linear infinite;
+}
+
+.animate-wave {
+  animation: wave 4s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 1s ease-out;
+}
+
+/* Enhanced cursor animations */
+.custom-cursor {
+  animation: cursor-pulse 2s ease-in-out infinite;
+}
+
+.custom-cursor.hover {
+  animation: cursor-pulse 1s ease-in-out infinite;
+}
+
+.cursor-trail {
+  animation: quantum-particle 1.2s ease-out forwards;
+}
+
+/* Navbar specific styles to ensure visibility */
+nav {
+  background-color: rgb(17, 24, 39) !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2) !important;
+}
+
+nav h1 {
+  color: rgb(168, 85, 247) !important;
+}
+
+/* Override navbar button styles to be simple links */
+nav button.cursor-hover {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-weight: normal !important;
+  color: inherit !important;
+  transition: all 0.3s ease !important;
+  transform: scale(1) !important;
+}
+
+nav button.cursor-hover:hover {
+  color: rgb(196, 181, 253) !important;
+  background-color: transparent !important;
+  border: none !important;
+  transform: translateY(-1px) !important;
+}
+
+nav button.cursor-hover:active {
+  transform: scale(0.95) !important;
+}
+
+nav button.cursor-hover:focus,
+nav button.cursor-hover:active {
+  outline: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Specific override for the global button styles that conflict with our design */
+button.cursor-hover {
+  background-color: transparent ;
+  border: 2px solid rgba(168, 85, 247, 0.5) ;
+  color: rgb(168, 85, 247) ;
+}
+
+button.cursor-hover:hover {
+  border-color: rgb(168, 85, 247) ;
+  color: white ;
+  background-color: rgba(168, 85, 247, 0.1) ;
+}
+
+
+
+
+.perspective {
+  perspective: 1200px;
+}
+
+
+@keyframes rotate-3d-slow {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+@keyframes rotate-3d-reverse {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(-360deg) rotateY(-360deg) rotateZ(-360deg); }
+}
+
+.animate-3d-slow {
+  animation: rotate-3d-slow 20s linear infinite;
+}
+
+.animate-3d-reverse {
+  animation: rotate-3d-reverse 25s linear infinite;
+}
