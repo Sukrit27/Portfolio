@@ -153,7 +153,7 @@ export default function Home() {
                             <div className="w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden p-1 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500">
                                 <img 
                                     src="/files/pic.jpg" 
-                                    alt="Sukrit" 
+                                    alt="Sukri" 
                                     className="w-full h-full object-cover rounded-full bg-gray-800"
                                 />
                             </div>
