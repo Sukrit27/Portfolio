@@ -4,7 +4,9 @@ export default function AnimatedCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
+  const [hoverType, setHoverType] = useState('');
   const [trails, setTrails] = useState([]);
+  const [sparkles, setSparkles] = useState([]);
 
   useEffect(() => {
     const updatePosition = (e) => {
@@ -34,6 +36,20 @@ export default function AnimatedCursor() {
           target.closest('a') ||
           target.closest('button')) {
         setIsHovering(true);
+        
+        // Determine hover type for special effects
+        if (target.tagName === 'A' || target.closest('a')) {
+          setHoverType('link');
+        } else if (target.classList.contains('group') || target.closest('.group')) {
+          setHoverType('button');
+        } else {
+          setHoverType('interactive');
+        }
+        
+        // Generate sparkle effects for special elements
+        if (target.classList.contains('group') || target.closest('.group')) {
+          generateSparkles(e.clientX, e.clientY);
+        }
       }
     };
 
@@ -45,7 +61,27 @@ export default function AnimatedCursor() {
           target.closest('a') ||
           target.closest('button')) {
         setIsHovering(false);
+        setHoverType('');
       }
+    };
+
+    const generateSparkles = (x, y) => {
+      const newSparkles = [];
+      for (let i = 0; i < 6; i++) {
+        newSparkles.push({
+          id: Date.now() + i,
+          x: x + (Math.random() - 0.5) * 40,
+          y: y + (Math.random() - 0.5) * 40,
+          size: Math.random() * 3 + 2,
+          delay: Math.random() * 500
+        });
+      }
+      setSparkles(prev => [...prev, ...newSparkles]);
+      
+      // Remove sparkles after animation
+      setTimeout(() => {
+        setSparkles(prev => prev.filter(sparkle => !newSparkles.includes(sparkle)));
+      }, 1000);
     };
 
     document.addEventListener('mousemove', updatePosition);
@@ -74,34 +110,72 @@ export default function AnimatedCursor() {
 
   return (
     <>
-      {/* Quantum Atom Cursor */}
+      {/* Tech Circuit Cursor */}
       <div
-        className={`custom-cursor ${isHovering ? 'hover' : ''} ${isClicking ? 'click' : ''}`}
+        className={`custom-cursor ${isHovering ? 'hover' : ''} ${isClicking ? 'click' : ''} ${hoverType ? `hover-${hoverType}` : ''}`}
         style={{
           left: position.x - 30,
           top: position.y - 30,
         }}
       >
-        {/* Atom nucleus - glowing center */}
-        <div className="atom-nucleus"></div>
+        {/* Central CPU chip */}
+        <div className="cpu-chip"></div>
         
-        {/* Electron orbital rings with orbiting electrons */}
-        <div className="electron-orbit orbit-1">
-          <div className="electron electron-1"></div>
-        </div>
-        <div className="electron-orbit orbit-2">
-          <div className="electron electron-2"></div>
-        </div>
-        <div className="electron-orbit orbit-3">
-          <div className="electron electron-3"></div>
-        </div>
+        {/* Circuit traces */}
+        <div className="circuit-trace trace-horizontal-1"></div>
+        <div className="circuit-trace trace-horizontal-2"></div>
+        <div className="circuit-trace trace-vertical-1"></div>
+        <div className="circuit-trace trace-vertical-2"></div>
+        
+        {/* Circuit nodes */}
+        <div className="circuit-node node-1"></div>
+        <div className="circuit-node node-2"></div>
+        <div className="circuit-node node-3"></div>
+        <div className="circuit-node node-4"></div>
+        
+        {/* Data flow indicators */}
+        <div className="data-flow flow-1"></div>
+        <div className="data-flow flow-2"></div>
+        
+        {/* Special hover effects */}
+        {isHovering && hoverType === 'button' && (
+          <>
+            <div className="pulse-ring pulse-ring-1"></div>
+            <div className="pulse-ring pulse-ring-2"></div>
+            <div className="energy-beam beam-1"></div>
+            <div className="energy-beam beam-2"></div>
+          </>
+        )}
+        
+        {isHovering && hoverType === 'link' && (
+          <>
+            <div className="link-indicator"></div>
+            <div className="connection-line line-1"></div>
+            <div className="connection-line line-2"></div>
+          </>
+        )}
       </div>
       
-      {/* Quantum particle trails with uncertainty principle */}
+      {/* Sparkle effects for special elements */}
+      {sparkles.map((sparkle) => (
+        <div
+          key={sparkle.id}
+          className="cursor-sparkle"
+          style={{
+            left: sparkle.x,
+            top: sparkle.y,
+            width: sparkle.size,
+            height: sparkle.size,
+            animationDelay: `${sparkle.delay}ms`
+          }}
+        />
+      ))}
+      
+      {/* Enhanced code particle trails */}
       {trails.map((trail, index) => (
         <div
           key={trail.id}
-          className="cursor-trail"
+          className={`cursor-trail ${isHovering ? 'trail-enhanced' : ''}`}
           style={{
             left: trail.x - 1.5,
             top: trail.y - 1.5,
