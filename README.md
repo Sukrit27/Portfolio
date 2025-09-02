@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Quantum Portfolio - Suprajit Dewanji
 
 A modern, interactive portfolio website showcasing quantum computing research, projects, and achievements.
@@ -49,3 +50,6 @@ Quantum Computing Researcher
 ---
 
 *Exploring the quantum frontier through algorithms and optimization*
+=======
+# Portfolio
+>>>>>>> 259af5a6e28d9306712c207c74a8ec3016722082
