@@ -1,35 +1,42 @@
-# Quantum Portfolio - Suprajit Dewanji
+Software Developer Portfolio - Sukrit Ghosh
 
-A modern, interactive portfolio website showcasing quantum computing research, projects, and achievements.
+A modern, interactive portfolio website showcasing software development skills, projects, and achievements.
 
-## 🚀 Features
+🚀 Features
 
-- **Animated Quantum Atom Cursor** - Interactive atom with orbiting electrons
-- **Modern Background Animations** - Floating particles and quantum effects
-- **Responsive Design** - Optimized for all devices
-- **Interactive Projects Gallery** - Showcase of quantum computing projects
-- **Publications & Patents** - Research achievements and intellectual property
-- **Contact Integration** - Easy ways to get in touch
+Interactive UI & Animations - Smooth transitions, particle effects, and modern visuals
 
-## 🛠️ Technologies
+Responsive Design - Optimized for desktop, tablet, and mobile
 
-- **React 18** - Modern React with hooks
-- **Vite** - Fast build tool and development server
-- **Tailwind CSS** - Utility-first CSS framework
-- **React Router** - Client-side routing
-- **Lucide React** - Beautiful icon library
+Projects Showcase - Highlighting full-stack, web, and software projects
 
-## 🎯 Sections
+Contact Integration - Easy ways to connect via email or socials
 
-- **Home** - Landing page with profile and research interests
-- **About** - Detailed background and education
-- **Projects** - Quantum computing research projects
-- **Publications** - Patents and research papers
-- **Contact** - Get in touch information
+🛠️ Technologies
 
-## 🚀 Getting Started
+React 18 - Component-based UI development
 
-```bash
+Vite - Fast build tool and dev server
+
+Tailwind CSS - Utility-first styling framework
+
+React Router - Client-side routing
+
+Lucide React - Icon library for modern design
+
+🎯 Sections
+
+Home - Landing page with profile and expertise
+
+About - Background, education, and skills
+
+Projects - Software & web development projects
+
+Upcoming Projects - Sneak peek into work in progress
+
+Contact - Get in touch via email or social links
+
+🚀 Getting Started
 # Install dependencies
 npm install
 
@@ -38,14 +45,11 @@ npm run dev
 
 # Build for production
 npm run build
-```
 
-## 📧 Contact
+📧 Contact
 
-**Suprajit Dewanji**  
-Engineering Physics, IIT Patna  
-Quantum Computing Researcher
+Sukrit Ghosh
+Software Developer | IIT Patna
+Passionate about building scalable applications and modern web solutions
 
----
-
-*Exploring the quantum frontier through algorithms and optimization*
+Crafting impactful software through code and creativity
