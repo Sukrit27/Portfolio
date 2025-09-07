@@ -321,7 +321,7 @@ html {
   cursor: none; /* Hide default cursor */
 }
 
-/* Quantum Atom Cursor Styles */
+/* Tech Circuit Cursor Styles */
 .custom-cursor {
   position: fixed;
   top: 0;
@@ -333,148 +333,307 @@ html {
   transition: transform 0.15s ease-out;
 }
 
-/* Atom nucleus - glowing center */
-.atom-nucleus {
+/* Central CPU chip */
+.cpu-chip {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 10px;
-  height: 10px;
-  background: radial-gradient(circle, #ffffff 0%, #a855f7 40%, #6366f1 100%);
-  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #475569, #1d4ed8, #64748b);
+  border: 2px solid #1d4ed8;
+  border-radius: 3px;
   transform: translate(-50%, -50%);
   box-shadow: 
-    0 0 10px #a855f7,
-    0 0 20px #a855f7,
-    0 0 30px rgba(168, 85, 247, 0.3);
-  animation: nucleus-pulse 1.5s ease-in-out infinite alternate;
+    0 0 8px #1d4ed8,
+    inset 0 0 4px rgba(29, 78, 216, 0.3);
+  animation: cpu-pulse 2s ease-in-out infinite alternate;
 }
 
-/* Electron orbital rings */
-.electron-orbit {
+/* Circuit traces */
+.circuit-trace {
   position: absolute;
+  background: linear-gradient(90deg, transparent, #1d4ed8, transparent);
+  opacity: 0.6;
+}
+
+.trace-horizontal-1 {
   top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: translateY(-50%);
+  animation: data-flow-horizontal 1.5s linear infinite;
+}
+
+.trace-horizontal-2 {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: translateY(-50%) translateY(8px);
+  animation: data-flow-horizontal 1.5s linear infinite reverse;
+  animation-delay: 0.75s;
+}
+
+.trace-vertical-1 {
+  top: 0;
   left: 50%;
-  border: 1px solid transparent;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background: conic-gradient(
-    from 0deg, 
-    transparent 0deg, 
-    rgba(168, 85, 247, 0.3) 90deg, 
-    transparent 180deg, 
-    rgba(99, 102, 241, 0.3) 270deg, 
-    transparent 360deg
-  );
-  mask: radial-gradient(circle, transparent 49%, white 50%);
-  -webkit-mask: radial-gradient(circle, transparent 49%, white 50%);
+  width: 1px;
+  height: 100%;
+  transform: translateX(-50%);
+  animation: data-flow-vertical 1.8s linear infinite;
 }
 
-.orbit-1 {
-  width: 40px;
-  height: 40px;
-  animation: orbit-rotate 2s linear infinite;
+.trace-vertical-2 {
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  transform: translateX(-50%) translateX(8px);
+  animation: data-flow-vertical 1.8s linear infinite reverse;
+  animation-delay: 0.9s;
 }
 
-.orbit-2 {
-  width: 50px;
-  height: 25px;
-  animation: orbit-rotate 2.5s linear infinite reverse;
-  transform: translate(-50%, -50%) rotateX(60deg);
-}
-
-.orbit-3 {
-  width: 50px;
-  height: 25px;
-  animation: orbit-rotate 3s linear infinite;
-  transform: translate(-50%, -50%) rotateX(-60deg);
-}
-
-/* Orbiting electrons */
-.electron {
+/* Circuit nodes */
+.circuit-node {
   position: absolute;
   width: 4px;
   height: 4px;
-  background: radial-gradient(circle, #60a5fa 0%, #3b82f6 100%);
+  background: #60a5fa;
   border-radius: 50%;
-  box-shadow: 
-    0 0 6px #60a5fa,
-    0 0 12px rgba(96, 165, 250, 0.5);
-  top: -2px;
+  box-shadow: 0 0 6px #60a5fa;
+  animation: node-blink 2s ease-in-out infinite;
+}
+
+.node-1 {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.node-2 {
+  top: 20%;
+  right: 20%;
+  animation-delay: 0.5s;
+}
+
+.node-3 {
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 1s;
+}
+
+.node-4 {
+  bottom: 20%;
+  right: 20%;
+  animation-delay: 1.5s;
+}
+
+/* Data flow indicators */
+.data-flow {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #00d4aa;
+  border-radius: 50%;
+  box-shadow: 0 0 4px #00d4aa;
+}
+
+.flow-1 {
+  top: 50%;
+  left: 10%;
+  animation: flow-move-right 2s linear infinite;
+}
+
+.flow-2 {
+  top: 30%;
   left: 50%;
-  transform: translateX(-50%);
-  animation: electron-orbit 2s linear infinite;
+  animation: flow-move-down 2.5s linear infinite;
 }
 
-.electron-1 {
-  animation-duration: 2s;
-}
-
-.electron-2 {
-  animation-duration: 2.5s;
-  animation-direction: reverse;
-}
-
-.electron-3 {
-  animation-duration: 3s;
-}
-
-/* Hover state - excited atom */
+/* Hover state - overclocked CPU */
 .custom-cursor.hover {
-  transform: scale(1.3);
+  transform: scale(1.2);
 }
 
-.custom-cursor.hover .atom-nucleus {
-  background: radial-gradient(circle, #ffffff 0%, #ec4899 40%, #f59e0b 100%);
+.custom-cursor.hover .cpu-chip {
+  background: linear-gradient(135deg, #f59e0b, #dc2626, #b91c1c);
+  border-color: #dc2626;
   box-shadow: 
-    0 0 15px #ec4899,
-    0 0 25px #ec4899,
-    0 0 40px rgba(236, 72, 153, 0.4);
+    0 0 12px #dc2626,
+    inset 0 0 6px rgba(220, 38, 38, 0.4);
+  animation-duration: 0.5s;
+}
+
+.custom-cursor.hover .circuit-trace {
+  background: linear-gradient(90deg, transparent, #dc2626, transparent);
+  opacity: 0.8;
+}
+
+.custom-cursor.hover .circuit-node {
+  background: #f59e0b;
+  box-shadow: 0 0 8px #f59e0b;
   animation-duration: 0.8s;
 }
 
-.custom-cursor.hover .electron-orbit {
-  background: conic-gradient(
-    from 0deg, 
-    transparent 0deg, 
-    rgba(236, 72, 153, 0.4) 90deg, 
-    transparent 180deg, 
-    rgba(245, 158, 11, 0.4) 270deg, 
-    transparent 360deg
-  );
-}
-
-.custom-cursor.hover .electron {
-  background: radial-gradient(circle, #f472b6 0%, #ec4899 100%);
-  box-shadow: 
-    0 0 8px #f472b6,
-    0 0 15px rgba(244, 114, 182, 0.6);
-}
-
-/* Click state - atomic reaction */
+/* Click state - system processing */
 .custom-cursor.click {
-  transform: scale(0.7);
+  transform: scale(0.8);
 }
 
-.custom-cursor.click .atom-nucleus {
-  background: radial-gradient(circle, #ffffff 0%, #10b981 40%, #059669 100%);
+.custom-cursor.click .cpu-chip {
+  background: linear-gradient(135deg, #10b981, #059669, #047857);
+  border-color: #10b981;
   box-shadow: 
-    0 0 20px #10b981,
-    0 0 35px #10b981,
-    0 0 50px rgba(16, 185, 129, 0.5);
-  animation-duration: 0.3s;
+    0 0 15px #10b981,
+    inset 0 0 8px rgba(16, 185, 129, 0.5);
+  animation-duration: 0.2s;
 }
 
-/* Quantum particle trails */
+/* Code particle trails */
 .cursor-trail {
   position: fixed;
   width: 3px;
   height: 3px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.8) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(29, 78, 216, 0.8) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
-  box-shadow: 0 0 6px rgba(168, 85, 247, 0.6);
+  box-shadow: 0 0 4px rgba(29, 78, 216, 0.6);
+  transition: all 0.3s ease;
+}
+
+.cursor-trail.trail-enhanced {
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.9) 0%, transparent 70%);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.8);
+  width: 4px;
+  height: 4px;
+}
+
+/* Special hover effects for buttons */
+.custom-cursor.hover-button .pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 2px solid #f59e0b;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
+}
+
+.pulse-ring-1 {
+  width: 80px;
+  height: 80px;
+  animation: pulse-expand 1.5s ease-out infinite;
+}
+
+.pulse-ring-2 {
+  width: 100px;
+  height: 100px;
+  animation: pulse-expand 1.5s ease-out infinite;
+  animation-delay: 0.5s;
+}
+
+.energy-beam {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #f59e0b, transparent);
+  height: 1px;
+  width: 120px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+}
+
+.beam-1 {
+  animation: beam-rotate 2s linear infinite;
+}
+
+.beam-2 {
+  animation: beam-rotate 2s linear infinite reverse;
+  animation-delay: 1s;
+}
+
+/* Special hover effects for links */
+.custom-cursor.hover-link .link-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: #60a5fa;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px #60a5fa;
+  animation: link-pulse 1s ease-in-out infinite alternate;
+}
+
+.connection-line {
+  position: absolute;
+  background: #60a5fa;
+  opacity: 0.5;
+}
+
+.line-1 {
+  width: 40px;
+  height: 1px;
+  top: 50%;
+  left: 10px;
+  animation: line-extend 1.2s ease-in-out infinite alternate;
+}
+
+.line-2 {
+  width: 40px;
+  height: 1px;
+  top: 50%;
+  right: 10px;
+  animation: line-extend 1.2s ease-in-out infinite alternate;
+  animation-delay: 0.6s;
+}
+
+/* Sparkle effects */
+.cursor-sparkle {
+  position: fixed;
+  background: radial-gradient(circle, #fbbf24 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  animation: sparkle-burst 1s ease-out forwards;
+}
+
+/* Enhanced hover states */
+.custom-cursor.hover-button {
+  transform: scale(1.4);
+}
+
+.custom-cursor.hover-button .cpu-chip {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+  border-color: #f59e0b;
+  box-shadow: 
+    0 0 20px #f59e0b,
+    inset 0 0 10px rgba(245, 158, 11, 0.6);
+  animation-duration: 0.3s;
+}
+
+.custom-cursor.hover-link {
+  transform: scale(1.25);
+}
+
+.custom-cursor.hover-link .cpu-chip {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb);
+  border-color: #3b82f6;
+  box-shadow: 
+    0 0 15px #3b82f6,
+    inset 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+.custom-cursor.hover-interactive .cpu-chip {
+  background: linear-gradient(135deg, #a78bfa, #8b5cf6, #7c3aed);
+  border-color: #8b5cf6;
+  box-shadow: 
+    0 0 12px #8b5cf6,
+    inset 0 0 6px rgba(139, 92, 246, 0.4);
 }
 
 /* Quantum uncertainty effect for trails */
@@ -493,6 +652,148 @@ html {
     opacity: 0;
     transform: scale(0.3);
     filter: blur(1px);
+  }
+}
+
+/* Tech Cursor Animations */
+@keyframes cpu-pulse {
+  0% {
+    box-shadow: 0 0 8px #1d4ed8, inset 0 0 4px rgba(29, 78, 216, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 16px #1d4ed8, inset 0 0 8px rgba(29, 78, 216, 0.5);
+  }
+}
+
+@keyframes data-flow-horizontal {
+  0% {
+    background: linear-gradient(90deg, transparent, transparent, transparent);
+  }
+  50% {
+    background: linear-gradient(90deg, transparent, #1d4ed8, transparent);
+  }
+  100% {
+    background: linear-gradient(90deg, transparent, transparent, transparent);
+  }
+}
+
+@keyframes data-flow-vertical {
+  0% {
+    background: linear-gradient(0deg, transparent, transparent, transparent);
+  }
+  50% {
+    background: linear-gradient(0deg, transparent, #1d4ed8, transparent);
+  }
+  100% {
+    background: linear-gradient(0deg, transparent, transparent, transparent);
+  }
+}
+
+@keyframes node-blink {
+  0%, 80%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes flow-move-right {
+  0% {
+    left: 10%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    left: 90%;
+    opacity: 0;
+  }
+}
+
+@keyframes flow-move-down {
+  0% {
+    top: 10%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    top: 90%;
+    opacity: 0;
+  }
+}
+
+/* Special hover effect animations */
+@keyframes pulse-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes beam-rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes link-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 12px #60a5fa;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.3);
+    box-shadow: 0 0 20px #60a5fa;
+  }
+}
+
+@keyframes line-extend {
+  0% {
+    width: 20px;
+    opacity: 0.3;
+  }
+  100% {
+    width: 50px;
+    opacity: 0.8;
+  }
+}
+
+@keyframes sparkle-burst {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.3) rotate(360deg);
+    opacity: 0;
   }
 }
 
@@ -752,7 +1053,10 @@ nav {
 }
 
 nav h1 {
-  color: rgb(168, 85, 247) !important;
+  background: linear-gradient(to right, #475569, #1d4ed8, #64748b) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
 }
 
 /* Override navbar button styles to be simple links */
@@ -823,4 +1127,16 @@ button.cursor-hover:hover {
 
 .animate-3d-reverse {
   animation: rotate-3d-reverse 25s linear infinite;
+}
+
+/* Override default button styles for our action buttons */
+button.group {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+button.group * {
+  box-sizing: border-box;
 }

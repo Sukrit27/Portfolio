@@ -260,9 +260,24 @@ export default function Home() {
                                         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                                     }
                                 }}
-                                className="px-8 sm:px-10 py-4 sm:py-5 border-2 border-cyan-400/50 hover:border-cyan-400 rounded-full text-cyan-400 hover:text-white hover:bg-cyan-400/10 font-semibold text-lg sm:text-xl transition-all duration-500 ease-in-out transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/25 active:scale-95 w-full sm:w-auto"
+                                className="group px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 rounded-full text-white font-semibold text-lg sm:text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25 w-full sm:w-auto"
                             >
-                                View Projects
+                                <span className="flex items-center justify-center gap-3 text-white">
+                                    View Projects
+                                    <svg
+                                        className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                        />
+                                    </svg>
+                                </span>
                             </button>
                         </div>
                     </div>

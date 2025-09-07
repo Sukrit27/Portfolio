@@ -28,7 +28,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-950 backdrop-blur-sm px-4 sm:px-6 py-4 shadow-lg border-b border-purple-500/20">
       <div className="flex justify-between items-center">
         <h1
-          className="text-xl sm:text-2xl font-bold text-blue-900 cursor-pointer hover:text-blue-900 transition-colors duration-300"
+          className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-600 via-blue-700 to-slate-500 bg-clip-text text-transparent cursor-pointer hover:from-slate-500 hover:via-blue-600 hover:to-slate-400 transition-all duration-300"
           onClick={(e) => scrollToSection('home', e)}
         >
           SG

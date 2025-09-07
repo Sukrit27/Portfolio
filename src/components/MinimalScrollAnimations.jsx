@@ -30,10 +30,10 @@ export default function ScrollAnimations() {
         }}
       >
         <div 
-          className="h-full bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 transition-all duration-300"
+          className="h-full bg-gradient-to-r from-slate-600 via-blue-700 to-slate-500 transition-all duration-300"
           style={{ 
             width: `${Math.max(scrollProgress, 5)}%`, // ensure minimum 5% width for visibility
-            boxShadow: '0 0 10px rgba(147, 51, 234, 0.7)',
+            boxShadow: '0 0 10px rgba(59, 130, 246, 0.6)',
             minWidth: scrollProgress > 0 ? '10px' : '0px' // minimum width when scrolling
           }}
         />
