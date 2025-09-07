@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# Quantum Portfolio - Suprajit Dewanji
-=======
 Software Developer Portfolio - Sukrit Ghosh
->>>>>>> 5be0eb5144cc578235e30f1102dc3b3e7c933f56
 
 A modern, interactive portfolio website showcasing software development skills, projects, and achievements.
 
@@ -56,7 +51,3 @@ npm run build
 Sukrit Ghosh
 Software Developer | IIT Patna
 Passionate about building scalable applications and modern web solutions
-
-<<<<<<< HEAD
----
-
